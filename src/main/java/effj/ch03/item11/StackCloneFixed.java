@@ -3,12 +3,12 @@ package effj.ch03.item11;
 
 import java.util.Arrays;
 
-public class Stack implements Cloneable {
+public class StackCloneFixed implements Cloneable {
 	private Object[] elements;
 	private int size = 0;
 	private static final int DEFAULT_INITIAL_CAPACITY = 16;
 
-	public Stack() {
+	public StackCloneFixed() {
 		this.elements = new Object[DEFAULT_INITIAL_CAPACITY];
 	}
 
@@ -30,9 +30,9 @@ public class Stack implements Cloneable {
 	}
 
 	@Override
-	public Stack clone() {
+	public StackCloneFixed clone() {
 		try {
-			Stack result = (Stack) super.clone();
+			StackCloneFixed result = (StackCloneFixed) super.clone();
 			result.elements = elements.clone();
 			return result;
 		} catch (CloneNotSupportedException e) {
@@ -48,14 +48,17 @@ public class Stack implements Cloneable {
 
 	// To see that clone works, call with several command line arguments
 	public static void main(String[] args) {
-		Stack stack = new Stack();
-		for (String arg : args)
-			stack.push(arg);
-		Stack copy = stack.clone();
-		while (!stack.isEmpty())
-			System.out.print(stack.pop() + " ");
+		StackCloneFixed orig = new StackCloneFixed();
+		orig.push("AAA");
+		orig.push("BB");
+		orig.push("C");
+		StackCloneFixed clone = orig.clone();
+		while (!orig.isEmpty()) {
+			System.out.print(orig.pop() + " ");
+		}
 		System.out.println();
-		while (!copy.isEmpty())
-			System.out.print(copy.pop() + " ");
+		while (!clone.isEmpty()) {
+			System.out.print(clone.pop() + " ");
+		}
 	}
 }

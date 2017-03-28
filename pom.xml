@@ -8,13 +8,15 @@
     <description>Source code to the book "Effective Java Second Edition" created by Joshua Bloch</description>
     
     <dependencies>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
-            <scope>test</scope>
         </dependency>
+
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -26,4 +28,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

@@ -25,6 +25,9 @@ public class Foo {
     private final Object finalizerGuardian = new Object() {
         @Override protected void finalize() throws Throwable {
             //... // Finalize outer Foo object
+            // тут скорее надо писать логику по очистке ресурсов
+            // для внешнего класса, т.к. всё равно из какого места будет вызвана очистка.
+            // в данном случае из файналайзера внутреннего объекта
         }
     };
 

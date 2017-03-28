@@ -59,7 +59,8 @@ public final class PhoneNumber implements Cloneable {
 	 */
 	@Override
 	public String toString() {
-		return String.format("(%03d) %03d-%04d", areaCode, prefix, lineNumber);
+		return String.format("(%03d) %03d-%04d @ %d %s", areaCode, prefix, lineNumber,
+				hashCode(), this.getClass());
 	}
 
 	@Override
@@ -72,9 +73,13 @@ public final class PhoneNumber implements Cloneable {
 	}
 
 	public static void main(String[] args) {
-		PhoneNumber pn = new PhoneNumber(707, 867, 5309);
+		PhoneNumber orig = new PhoneNumber(707, 867, 5309);
+		System.out.println("orig = " + orig);
 		Map<PhoneNumber, String> m = new HashMap<PhoneNumber, String>();
-		m.put(pn, "Jenny");
-		System.out.println(m.get(pn.clone()));
+		m.put(orig, "Jenny");
+		PhoneNumber clone = orig.clone();
+		System.out.println("clone = " + clone);
+		System.out.println("m.get(orig.clone())="+m.get(clone));
+		System.out.println("clone.equals(orig) = " + clone.equals(orig));
 	}
 }

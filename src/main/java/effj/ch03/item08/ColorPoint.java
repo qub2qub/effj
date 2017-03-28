@@ -12,23 +12,32 @@ public class ColorPoint extends Point {
 	// Broken - violates symmetry!
 	@Override
 	public boolean equals(Object o) {
-		if (!(o instanceof ColorPoint))
+		if (!(o instanceof ColorPoint)) {
 			return false;
+		}
 		return super.equals(o) && ((ColorPoint) o).color == color;
 	}
 
 	// Broken - violates transitivity!
-	// @Override public boolean equals(Object o) {
-	// if (!(o instanceof Point))
-	// return false;
-	//
-	// // If o is a normal Point, do a color-blind comparison
-	// if (!(o instanceof ColorPoint))
-	// return o.equals(this);
-	//
-	// // o is a ColorPoint; do a full comparison
-	// return super.equals(o) && ((ColorPoint)o).color == color;
-	// }
+	/* @Override public boolean equals(Object o) {
+	 if (!(o instanceof Point))
+	 return false;
+
+	 // If o is a normal Point, do a color-blind comparison
+	 if (!(o instanceof ColorPoint))
+	 	return o.equals(this);
+
+	 // o is a ColorPoint; do a full comparison
+	 return super.equals(o) && ((ColorPoint)o).color == color;
+	 }*/
+
+	// Broken - violates Liskov substitution principle (page 40)
+	/*@Override public boolean equals(Object o) {
+		if (o == null || o.getClass() != getClass())
+			return false;
+		Point p = (Point) o;
+		return p.x == x && p.y == y;
+	}*/
 
 	public static void main(String[] args) {
 		// First equals function violates symmetry

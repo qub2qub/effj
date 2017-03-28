@@ -1,6 +1,8 @@
 // Adds a value component without violating the equals contract - Page 40
 package effj.ch03.item08.composition;
 
+import java.util.Arrays;
+
 public class ColorPoint {
 	private final Point point;
 	private final Color color;
@@ -24,6 +26,7 @@ public class ColorPoint {
 		if (!(o instanceof ColorPoint))
 			return false;
 		ColorPoint cp = (ColorPoint) o;
+//		Arrays.equals()
 		return cp.point.equals(point) && cp.color.equals(color);
 	}
 

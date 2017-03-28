@@ -61,6 +61,7 @@ public class NutritionFacts {
 
 	public static void main(String[] args) {
 
+		// A builder whose parameters have been set makes a fine Abstract Factory.
 		Builder<NutritionFacts> builder = new NFBuilder
 				(240, 8)
 				.calories(100)

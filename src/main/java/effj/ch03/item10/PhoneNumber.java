@@ -65,6 +65,7 @@ public final class PhoneNumber {
 	public static void main(String[] args) {
 		Map<PhoneNumber, String> m = new HashMap<PhoneNumber, String>();
 		m.put(new PhoneNumber(707, 867, 5309), "Jenny");
+		m.put(new PhoneNumber(12, 34, 567), "Bob");
 		System.out.println(m);
 	}
 }
