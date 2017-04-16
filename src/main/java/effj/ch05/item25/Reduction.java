@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Reduction {
+
 	static <E> E reduce(List<E> list, Function<E> f, E initVal) {
 		List<E> snapshot;
 		synchronized (list) {

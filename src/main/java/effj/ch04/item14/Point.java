@@ -1,5 +1,7 @@
 // Encapsulation of data by accessor methods and mutators
-package effj.ch04.item14;
+		package effj.ch04.item14;
+
+//import effj.ch03.item12.OuterClass;
 
 class Point {
 	private double x;
@@ -24,5 +26,9 @@ class Point {
 
 	public void setY(double y) {
 		this.y = y;
+	}
+
+	public static void main(String[] args) {
+//		OuterClass ok = new OuterClass();
 	}
 }

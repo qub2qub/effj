@@ -1,6 +1,7 @@
 // Making PhoneNumber comparable - Pages 65-66
 package effj.ch03.item12;
 
+import java.rmi.server.ServerCloneException;
 import java.util.NavigableSet;
 import java.util.Random;
 import java.util.TreeSet;
@@ -64,7 +65,9 @@ public final class PhoneNumber implements Cloneable, Comparable<PhoneNumber> {
 	}
 
 	@Override
-	public PhoneNumber clone() {
+	public PhoneNumber clone() throws ServerCloneException {
+		// можно сузить экс и возвр.тип,
+		// и можно расширить модификатор паблик.
 		try {
 			return (PhoneNumber) super.clone();
 		} catch (CloneNotSupportedException e) {
@@ -119,12 +122,17 @@ public final class PhoneNumber implements Cloneable, Comparable<PhoneNumber> {
 		return lineNumber - pn.lineNumber;
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws CloneNotSupportedException {
 		System.out.println(null == null);
 		NavigableSet<PhoneNumber> s = new TreeSet<PhoneNumber>();
 		for (int i = 0; i < 10; i++)
 			s.add(randomPhoneNumber());
 		System.out.println(s);
+
+		PhoneNumber num1 = new PhoneNumber(123, 456, 4321);
+		PhoneNumber num2 = (PhoneNumber) num1.clone();
+		System.out.println("num1 = " + num1);
+		System.out.println("num2 = " + num2);
 	}
 
 	private static final Random rnd = new Random();

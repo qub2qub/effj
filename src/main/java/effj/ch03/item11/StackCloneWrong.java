@@ -49,6 +49,11 @@ public class StackCloneWrong implements Cloneable{
         System.out.println(orig.pop());
         System.out.println(clone.pop());
         System.out.println(clone.pop());
+//        System.out.println(clone.pop()); // на 3й вызов синхронизируем переменную size c оригинальным
+//        System.out.println(orig.pop());
+//        System.out.println(orig.pop());
+//        float f1 = 1.0;
+        System.out.println(-1.0d / 0.0);
 //        C
 //        BB
 //        null

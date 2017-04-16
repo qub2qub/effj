@@ -6,9 +6,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class IntArrays {
+
 	static List<Integer> intArrayAsList(final int[] a) {
-		if (a == null)
+		if (a == null) {
 			throw new NullPointerException();
+		}
 
 		return new AbstractList<Integer>() {
 			public Integer get(int i) {

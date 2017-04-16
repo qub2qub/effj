@@ -19,12 +19,14 @@ public class InstrumentedHashSet<E> extends HashSet<E> {
 	@Override
 	public boolean add(E e) {
 		addCount++;
+		System.out.print("  "+addCount);
 		return super.add(e);
 	}
 
 	@Override
 	public boolean addAll(Collection<? extends E> c) {
 		addCount += c.size();
+		System.out.print("  "+addCount);
 		return super.addAll(c);
 	}
 
@@ -35,6 +37,8 @@ public class InstrumentedHashSet<E> extends HashSet<E> {
 	public static void main(String[] args) {
 		InstrumentedHashSet<String> s = new InstrumentedHashSet<String>();
 		s.addAll(Arrays.asList("Snap", "Crackle", "Pop"));
-		System.out.println(s.getAddCount());
+		System.out.println("\n"+s.getAddCount());
+		System.out.println("s = " + s);
+
 	}
 }

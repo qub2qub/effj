@@ -1,6 +1,9 @@
 // Immutable class - pages 76-78
 package effj.ch04.item15;
 
+/**
+ * a number with both real and imaginary parts
+ */
 public final class Complex {
 	private final double re;
 	private final double im;
@@ -45,17 +48,19 @@ public final class Complex {
 
 	public Complex divide(Complex c) {
 		double tmp = c.re * c.re + c.im * c.im;
-		return new Complex((re * c.re + im * c.im) / tmp, (im * c.re - re
-				* c.im)
-				/ tmp);
+		return new Complex(
+				(re * c.re + im * c.im)  / tmp,
+				(im * c.re - re 	* c.im) / tmp);
 	}
 
 	@Override
 	public boolean equals(Object o) {
-		if (o == this)
+		if (o == this) {
 			return true;
-		if (!(o instanceof Complex))
+		}
+		if (!(o instanceof Complex)) {
 			return false;
+		}
 		Complex c = (Complex) o;
 
 		// See page 43 to find out why we use compare instead of ==

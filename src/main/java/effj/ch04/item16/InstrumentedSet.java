@@ -16,12 +16,14 @@ public class InstrumentedSet<E> extends ForwardingSet<E> {
 	@Override
 	public boolean add(E e) {
 		addCount++;
+		System.out.print("  "+addCount);
 		return super.add(e);
 	}
 
 	@Override
 	public boolean addAll(Collection<? extends E> c) {
 		addCount += c.size();
+		System.out.print("  "+addCount);
 		return super.addAll(c);
 	}
 
@@ -33,6 +35,6 @@ public class InstrumentedSet<E> extends ForwardingSet<E> {
 		InstrumentedSet<String> s = new InstrumentedSet<String>(
 				new HashSet<String>());
 		s.addAll(Arrays.asList("Snap", "Crackle", "Pop"));
-		System.out.println(s.getAddCount());
+		System.out.println("\n"+s.getAddCount());
 	}
 }
