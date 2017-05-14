@@ -9,9 +9,13 @@ public class Favorites {
 	private Map<Class<?>, Object> favorites = new HashMap<Class<?>, Object>();
 
 	public <T> void putFavorite(Class<T> type, T instance) {
-		if (type == null)
+		if (type == null) {
 			throw new NullPointerException("Type is null");
+		}
 		favorites.put(type, instance);
+
+		// Achieving runtime type safety with a dynamic cast
+//		favorites.put(type, type.cast(instance));
 	}
 
 	public <T> T getFavorite(Class<T> type) {
@@ -28,7 +32,10 @@ public class Favorites {
 		String favoriteString = f.getFavorite(String.class);
 		int favoriteInteger = f.getFavorite(Integer.class);
 		Class<?> favoriteClass = f.getFavorite(Class.class);
-		System.out.printf("%s %x %s%n", favoriteString, favoriteInteger,
-				favoriteClass.getName());
+		System.out.printf("%s || %x || %s%n",
+			favoriteString, favoriteInteger, favoriteClass.getName());
+
+		Integer casted = Integer.class.cast(0b11);
+		System.out.println(Integer.class + "__ casted = " + casted);
 	}
 }

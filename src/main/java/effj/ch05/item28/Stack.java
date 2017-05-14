@@ -41,36 +41,42 @@ public class Stack<E> {
 	}
 
 	// pushAll method without wildcard type - deficient!
-	// public void pushAll(Iterable<E> src) {
-	// for (E e : src)
-	// push(e);
-	// }
+	public void pushAllBad(Iterable<E> src) {
+		for (E e : src) {
+			push(e);
+		}
+	}
 
 	// Wildcard type for parameter that serves as an E producer
 	public void pushAll(Iterable<? extends E> src) {
-		for (E e : src)
+		for (E e : src) {
 			push(e);
+		}
 	}
 
 	// popAll method without wildcard type - deficient!
-	// public void popAll(Collection<E> dst) {
-	// while (!isEmpty())
-	// dst.add(pop());
-	// }
+	public void popAllBad(Collection<E> dst) {
+		while (!isEmpty()) {
+			dst.add(pop());
+		}
+	}
 
 	// Wildcard type for parameter that serves as an E consumer
 	public void popAll(Collection<? super E> dst) {
-		while (!isEmpty())
+		while (!isEmpty()) {
 			dst.add(pop());
+		}
 	}
 
 	// Little program to exercise our generic Stack
 	public static void main(String[] args) {
 		Stack<Number> numberStack = new Stack<Number>();
 		Iterable<Integer> integers = Arrays.asList(3, 1, 4, 1, 5, 9);
+//		numberStack.pushAllBad(integers); // won't compile
 		numberStack.pushAll(integers);
 
 		Collection<Object> objects = new ArrayList<Object>();
+//		numberStack.popAllBad(objects); // won't compile
 		numberStack.popAll(objects);
 
 		System.out.println(objects);

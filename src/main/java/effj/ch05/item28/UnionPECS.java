@@ -4,7 +4,7 @@ package effj.ch05.item28;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Union {
+public class UnionPECS {
 
 	public static <E> Set<E> union(Set<? extends E> s1, Set<? extends E> s2) {
 		Set<E> result = new HashSet<E>(s1);
@@ -24,12 +24,13 @@ public class Union {
 		doubles.add(4.0);
 		doubles.add(6.0);
 
-		// Won't compile; see page 137
-		// Set<Number> numbers = union(integers, doubles);
+		// Won't compile; see page 137 // in Java8 it compiles fine
+		 Set<Number> numbersBad = union(integers, doubles);
 
 		// Explicit type parameter is necessary here
-		Set<Number> numbers = Union.<Number> union(integers, doubles);
+		Set<Number> numbers = UnionPECS.<Number> union(integers, doubles);
 
+		System.out.println(numbersBad);
 		System.out.println(numbers);
 	}
 }
