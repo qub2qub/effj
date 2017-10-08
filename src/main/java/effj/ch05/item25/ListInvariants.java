@@ -9,20 +9,37 @@ import java.util.List;
  */
 public class ListInvariants {
 
+    public static void main2(List<Integer>... args) {
+
+    }
     public static void main(String[] args) {
         // Fails at runtime!
         Object[] objectArray = new Long[2];
         objectArray[0] = 22L;
         objectArray[1] = "I don't fit in"; // Throws ArrayStoreException
 
+        // Only unbounded wildcars possible
+        List<?>[] arrayOfUnboundedWildcard = new List[10];
+        List<String> str = new ArrayList<>();
+        List<Long> lon = new ArrayList<>();
+        List<Object> obj = new ArrayList<>();
+
+        arrayOfUnboundedWildcard[0] = str;
+        arrayOfUnboundedWildcard[1] = lon;
+        arrayOfUnboundedWildcard[2] = obj;
+
+        List<?> strings = arrayOfUnboundedWildcard[0];
+        Object o = strings.get(1);
 //  Won't compile!
 //        List<Object> ol = new ArrayList<Long>(); // Incompatible types
 //        ol.add("I don't fit in");
 
-        // Why generic array creation is illegal - won't compile!
-        /*List<String>[] stringLists = new List<String>[1]; // (1)
-        List<Integer> intList = Arrays.asList(42); // (2)
+        // Why generic array creation is illegal -
+//        List<String>[] stringLists = new List<String>[1]; // (1) won't compile!
 
+        List<String>[] stringLists = null;
+        List<Integer> intList = Arrays.asList(42); // (2)
+        intList.toArray(stringLists); // test
         Object[] objects = stringLists; // (3)
         // == List<String>[] objects -- т.е. массив, к-й в ячейке хранит листы стрингов
         // а мы ему в ячейку добавим лист интов
