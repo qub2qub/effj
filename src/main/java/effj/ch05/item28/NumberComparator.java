@@ -5,7 +5,7 @@ import java.util.Comparator;
 /**
  * Created by Denis on 2017-09-17
  */
-public class NumberComparator implements Comparator<? super Number> {
+public class NumberComparator implements Comparator {
 
     @Override
     public int compare(Object o1, Object o2) {

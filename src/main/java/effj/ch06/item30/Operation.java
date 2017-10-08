@@ -31,11 +31,6 @@ public enum Operation {
 		this.symbol = symbol;
 	}
 
-	@Override
-	public String toString() {
-		return symbol;
-	}
-
 	abstract double apply(double x, double y);
 
 	// Implementing a fromString method on an enum type - Page 154
@@ -45,6 +40,12 @@ public enum Operation {
 			stringToEnum.put(op.toString(), op);
 	}
 
+	@Override
+	public String toString() {
+		return symbol;
+	}
+
+
 	// Returns Operation for string, or null if string is invalid
 	public static Operation fromString(String symbol) {
 		return stringToEnum.get(symbol);
@@ -52,8 +53,15 @@ public enum Operation {
 
 	// Test program to perform all operations on given operands
 	public static void main(String[] args) {
-		double x = Double.parseDouble(args[0]);
-		double y = Double.parseDouble(args[1]);
+//		double x1 = Double.parseDouble(args[0]);
+//		double y2 = Double.parseDouble(args[1]);
+		double x = 1.1;
+		double y = 2.2;
+		Operation plus = Operation.valueOf("PLUS");
+		Operation operation = Operation.fromString("*");
+		System.out.println("plus = " + plus.ordinal());
+		System.out.println("operation = " + operation.ordinal());
+		//DenEnum.DEN.
 		for (Operation op : Operation.values())
 			System.out.printf("%f %s %f = %f%n", x, op, y, op.apply(x, y));
 	}

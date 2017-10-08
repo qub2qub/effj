@@ -20,8 +20,10 @@ enum PayrollDay {
 	private enum PayType {
 		WEEKDAY {
 			double overtimePay(double hours, double payRate) {
-				return hours <= HOURS_PER_SHIFT ? 0 : (hours - HOURS_PER_SHIFT)
-						* payRate / 2;
+				return
+					hours <= HOURS_PER_SHIFT
+					? 0
+					: (hours - HOURS_PER_SHIFT) * payRate / 2;
 			}
 		},
 		WEEKEND {
