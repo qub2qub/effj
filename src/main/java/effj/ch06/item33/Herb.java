@@ -9,7 +9,9 @@ import java.util.Set;
 // Simplistic class representing a culinary herb - Page 161
 public class Herb {
 	public enum Type {
-		ANNUAL, PERENNIAL, BIENNIAL
+		ANNUAL, // ежегодный
+		PERENNIAL, // многолетний
+		BIENNIAL // двухгодичный
 	}
 
 	private final String name;
@@ -34,12 +36,16 @@ public class Herb {
 				new Herb("Rosemary", Type.PERENNIAL) };
 
 		// Using an EnumMap to associate data with an enum - Page 162
-		Map<Herb.Type, Set<Herb>> herbsByType = new EnumMap<Herb.Type, Set<Herb>>(
-				Herb.Type.class);
-		for (Herb.Type t : Herb.Type.values())
+		Map<Herb.Type, Set<Herb>> herbsByType = new EnumMap<>( Herb.Type.class );
+
+		for (Herb.Type t : Herb.Type.values()) {
+			// инициируем мапу пустым сетом
 			herbsByType.put(t, new HashSet<Herb>());
-		for (Herb h : garden)
+		}
+		for (Herb h : garden) {
+			// наполняем мапу конкретными травами
 			herbsByType.get(h.type).add(h);
+		}
 		System.out.println(herbsByType);
 	}
 }

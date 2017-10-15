@@ -57,6 +57,7 @@ public enum Operation {
 //		double y2 = Double.parseDouble(args[1]);
 		double x = 1.1;
 		double y = 2.2;
+//		Operation.PLUS.apply();
 		Operation plus = Operation.valueOf("PLUS");
 		Operation operation = Operation.fromString("*");
 		System.out.println("plus = " + plus.ordinal());

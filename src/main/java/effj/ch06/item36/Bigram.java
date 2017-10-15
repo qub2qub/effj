@@ -13,10 +13,12 @@ public class Bigram {
 		this.second = second;
 	}
 
+//	@Override
 	public boolean equals(Bigram b) {
 		return b.first == first && b.second == second;
 	}
 
+	@Override
 	public int hashCode() {
 		return 31 * first + second;
 	}

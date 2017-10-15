@@ -5,12 +5,12 @@ import java.util.Arrays;
 import java.util.Collection;
 
 public enum ExtendedOperation implements Operation {
-	EXP("^") {
+	EXP("^") { // exponentiation
 		public double apply(double x, double y) {
 			return Math.pow(x, y);
 		}
 	},
-	REMAINDER("%") {
+	REMAINDER("%") { // remainder
 		public double apply(double x, double y) {
 			return x % y;
 		}
@@ -27,26 +27,30 @@ public enum ExtendedOperation implements Operation {
 		return symbol;
 	}
 
+
+
 	// Test class to exercise all operations in "extension enum" - Page 167
 	public static void main(String[] args) {
-		double x = Double.parseDouble(args[0]);
-		double y = Double.parseDouble(args[1]);
+//		double x = Double.parseDouble(args[0]);
+//		double y = Double.parseDouble(args[1]);
+		double x = 5;
+		double y = 2;
+		test(BasicOperation.class, x, y);
 		test(ExtendedOperation.class, x, y);
 
 		System.out.println(); // Print a blank line between tests
-		test2(Arrays.asList(ExtendedOperation.values()), x, y);
+		test2(Arrays.asList(ExtendedOperation.values()),x, y);
 	}
 
 	// test parameter is a bounded type token (Item 29)
-	private static <T extends Enum<T> & Operation> void test(Class<T> opSet,
-			double x, double y) {
+	private static <T extends Enum<T> & Operation> void test(
+		Class<T> opSet, double x, double y) {
 		for (Operation op : opSet.getEnumConstants())
 			System.out.printf("%f %s %f = %f%n", x, op, y, op.apply(x, y));
 	}
 
 	// test parameter is a bounded wildcard type (Item 28)
-	private static void test2(Collection<? extends Operation> opSet, double x,
-			double y) {
+	private static void test2(Collection<? extends Operation> opSet, double x, double y) {
 		for (Operation op : opSet)
 			System.out.printf("%f %s %f = %f%n", x, op, y, op.apply(x, y));
 	}

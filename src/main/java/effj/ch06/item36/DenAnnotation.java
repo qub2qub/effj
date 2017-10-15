@@ -1,5 +1,4 @@
-// Marker annotation type declaration - Page 169
-package effj.ch06.item35;
+package effj.ch06.item36;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,10 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Indicates that the annotated method is a test method.
- * Use only on parameterless static methods.
+ * Created by den on 2017-10-15
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface Test {
+public @interface DenAnnotation {
+
 }

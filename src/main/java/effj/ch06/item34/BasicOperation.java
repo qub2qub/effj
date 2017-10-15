@@ -24,6 +24,10 @@ public enum BasicOperation implements Operation {
 	};
 	private final String symbol;
 
+//	public double apply(double x, double y) {
+//		return -1.0;
+//	};
+
 	BasicOperation(String symbol) {
 		this.symbol = symbol;
 	}
