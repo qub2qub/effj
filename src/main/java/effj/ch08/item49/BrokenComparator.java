@@ -1,5 +1,5 @@
 // Broken comparator - can you spot the flaw? - Page 221
-package effj.ch07.item49;
+package effj.ch08.item49;
 
 import java.util.Comparator;
 

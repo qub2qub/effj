@@ -15,12 +15,19 @@ public class SetList {
 			set.add(i);
 			list.add(i);
 		}
-
+		System.out.println("1 set = " + set);
+		System.out.println("1 list = " + list);
+		System.out.println("remove 0,1,2");
 		for (int i = 0; i < 3; i++) {
-			set.remove(i);
-			list.remove(i);
-		}
+			//removing the positive values from the set.
+			set.remove(i); // remove(Object o);
 
-		System.out.println(set + " " + list);
+			// remove the zeroth element, then the first, and then the second, you’re left with [-2, 0, 2],
+			list.remove(i); // remove(int index)
+			//solution:
+//			list.remove(Integer.valueOf(i)); //  remove(Object o)
+		}
+		System.out.println("2 set = " + set);
+		System.out.println("2 list = " + list);
 	}
 }

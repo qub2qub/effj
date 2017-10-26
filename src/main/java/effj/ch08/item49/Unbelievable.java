@@ -1,5 +1,5 @@
 // What does this program do? - Page 222
-package effj.ch07.item49;
+package effj.ch08.item49;
 
 public class Unbelievable {
 	static Integer i;

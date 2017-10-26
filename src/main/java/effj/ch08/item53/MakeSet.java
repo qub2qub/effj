@@ -1,5 +1,5 @@
 // Reflective instantiation with interface access - Page 231
-package effj.ch07.item53;
+package effj.ch08.item53;
 
 import java.util.Arrays;
 import java.util.Set;
