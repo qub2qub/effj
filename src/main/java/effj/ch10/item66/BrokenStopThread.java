@@ -1,9 +1,9 @@
 // Broken! - How long would you expect this program to run? - Page 259
-package effj.ch10.item66.brokenstopthread;
+package effj.ch10.item66;
 
 import java.util.concurrent.TimeUnit;
 
-public class StopThread {
+public class BrokenStopThread {
 	private static boolean stopRequested;
 
 	public static void main(String[] args) throws InterruptedException {

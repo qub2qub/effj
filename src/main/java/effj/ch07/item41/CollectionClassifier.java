@@ -24,13 +24,14 @@ public class CollectionClassifier {
     }
 
     public static void main(String[] args) {
-        Collection<?>[] collections = {
+        Collection<?>[] collections = { // массив Collection<?>
             new HashSet<String>(),
             new ArrayList<BigInteger>(),
             new HashMap<String, String>().values()};
 
         for (Collection<?> c : collections) {
             System.out.println(classify(c));
+//            c.classify()
         }
     }
 }

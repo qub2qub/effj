@@ -1,9 +1,9 @@
 // Properly synchronized cooperative thread termination - Page 261
-package effj.ch10.item66.fixedstopthread1;
+package effj.ch10.item66;
 
 import java.util.concurrent.TimeUnit;
 
-public class StopThread {
+public class FixedStopThread1 {
 	private static boolean stopRequested;
 
 	private static synchronized void requestStop() {

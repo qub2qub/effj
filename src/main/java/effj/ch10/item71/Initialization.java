@@ -21,31 +21,42 @@ public class Initialization {
 	}
 
 	static FieldType getField3() {
+	/*
+	When the getField() method is invoked for the first time,
+	it reads FieldHolder.field for the first time,
+	causing the FieldHolder class to get initialized.
+	 */
 		return FieldHolder.field;
 	}
 
 	// Double-check idiom for lazy initialization of instance fields - Page 283
-	private volatile FieldType field4;
+	private volatile FieldType field4; // !! volatile
 
 	FieldType getField4() {
+		/*
+		What this variable ("result") does is to ensure that field is read only once
+		in the common case where it’s already initialized.
+		 */
 		FieldType result = field4;
 		if (result == null) { // First check (no locking)
 			synchronized (this) {
 				result = field4;
-				if (result == null) // Second check (with locking)
+				if (result == null) { // Second check (with locking)
 					field4 = result = computeFieldValue();
+				}
 			}
 		}
 		return result;
 	}
 
 	// Single-check idiom - can cause repeated initialization! - Page 284
-	private volatile FieldType field5;
+	private volatile FieldType field5; // !! volatile
 
 	private FieldType getField5() {
 		FieldType result = field5;
-		if (result == null)
+		if (result == null) {
 			field5 = result = computeFieldValue();
+		}
 		return result;
 	}
 

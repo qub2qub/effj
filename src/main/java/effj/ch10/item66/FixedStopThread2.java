@@ -1,9 +1,9 @@
 // Cooperative thread termination with a volatile field
-package effj.ch10.item66.fixedstopthread2;
+package effj.ch10.item66;
 
 import java.util.concurrent.TimeUnit;
 
-public class StopThread {
+public class FixedStopThread2 {
 	private static volatile boolean stopRequested;
 
 	public static void main(String[] args) throws InterruptedException {
