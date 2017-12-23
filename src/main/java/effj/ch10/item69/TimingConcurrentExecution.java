@@ -1,5 +1,6 @@
 package effj.ch10.item69;
 
+import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 
@@ -41,6 +42,15 @@ public class TimingConcurrentExecution {
         long startNanos = System.nanoTime();
         peersToStart.countDown(); // And they're off!
         workIsdone.await(); // Wait for all workers to finish
+
+//        System.runFinalizersOnExit(); // THREAD-HOSTILE — ВРАЖДЕБНЫЕ К МНОГОПОТОЧНОСТИ
+        /*Thread.currentThread().setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
+            @Override
+            public void uncaughtException(Thread t, Throwable e) {
+
+            }
+        });*/
+
         return System.nanoTime() - startNanos;
     }
 }

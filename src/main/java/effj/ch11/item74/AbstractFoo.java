@@ -11,8 +11,7 @@ public abstract class AbstractFoo {
 		NEW, INITIALIZING, INITIALIZED
 	};
 
-	private final AtomicReference<State> init = new AtomicReference<State>(
-			State.NEW);
+	private final AtomicReference<State> init = new AtomicReference<>(State.NEW);
 
 	public AbstractFoo(int x, int y) {
 		initialize(x, y);

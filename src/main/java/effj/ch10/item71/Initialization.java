@@ -37,8 +37,8 @@ public class Initialization {
 		What this variable ("result") does is to ensure that field is read only once
 		in the common case where it’s already initialized.
 		 */
-		FieldType result = field4;
-		if (result == null) { // First check (no locking)
+		FieldType result = field4; // 1) иначе бы 2 раза считывал валотайл переменную
+		if (result == null) { // 2) First check (no locking)
 			synchronized (this) {
 				result = field4;
 				if (result == null) { // Second check (with locking)
@@ -46,7 +46,7 @@ public class Initialization {
 				}
 			}
 		}
-		return result;
+		return result; // 3)
 	}
 
 	// Single-check idiom - can cause repeated initialization! - Page 284
